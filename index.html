@@ -26,8 +26,8 @@
     </div>
 
     <div class="offset-md-3 col-md-6 issues-class" ng-show="showDiv">
-        <h2>Github open issues count</h2>
         <div ng-if="issuesList.length">
+            <h2>Github open issues count</h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -56,7 +56,7 @@
             </table>
         </div>
         <div ng-if="!issuesList.length">
-            <p>No open issues yet</p>
+            <h2>No open issues yet</h2>
         </div>
     </div>
 </div>
