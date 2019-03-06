@@ -4,21 +4,19 @@
 <head>
     <meta charset="utf-8">
 
-    <title ng-bind="'github-open-issues'">Seller</title>
+    <title ng-bind="'github-open-issues'">github-open-issues</title>
     <meta name="description" content=""/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
 </head>
 <body class="ng-clock">
 <div class="container page-wrapper" ng-controller="githubController">
     <div class="offset-md-3 col-md-6 offset-md-3 form-class">
         <h2>Github open issues details</h2>
-
         <form>
             <label>Enter Github Url </label>
             <input type="text" class="form-control" ng-keyup="$event.keyCode == 13 ? getIssuesCount(githubUrl) : null"
@@ -27,41 +25,45 @@
         </form>
     </div>
 
-    <div class="offset-md-3 col-md-6 issues-class" ng-if="issuesList.length">
+    <div class="offset-md-3 col-md-6 issues-class">
         <h2>Github open issues count</h2>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Issues</th>
-                <th>ssues Count</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Total Open Issues</td>
-                <td>{{issuesList.length}}</td>
-            </tr>
-            <tr>
-                <td>Open issues in last 24 hours</td>
-                <td>{{issuesCreatedIn24Hrs.length}}</td>
-            </tr>
-            <tr>
-                <td>Open issues in past 7days</td>
-                <td>{{issuesCreatedIn7Days.length}}</td>
-            </tr>
-            <tr>
-                <td>Open issues beyond 7 days</td>
-                <td>{{issuesCreatedBefore7Days.length}}</td>
-            </tr>
-            </tbody>
-        </table>
+        <div ng-if="issuesList.length">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Issues</th>
+                        <th>ssues Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Open Issues</td>
+                        <td>{{issuesList.length}}</td>
+                    </tr>
+                    <tr>
+                        <td>Open issues in last 24 hours</td>
+                        <td>{{issuesCreatedIn24Hrs.length}}</td>
+                    </tr>
+                    <tr>
+                        <td>Open issues in past 7days</td>
+                        <td>{{issuesCreatedIn7Days.length}}</td>
+                    </tr>
+                    <tr>
+                        <td>Open issues beyond 7 days</td>
+                        <td>{{issuesCreatedBefore7Days.length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="!issuesList.length">
+            <p>No open issues yet</p>
+        </div>
     </div>
 </div>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/angular/angular.js"></script>
 <script src="node_modules/moment/moment.js"></script>
-<!-- <script src="node_modules/angular-moment/angular-moment.min.js"></script> -->
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script src="githubController.js"></script>

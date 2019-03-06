@@ -11,13 +11,7 @@ angular.module('github-open-issues', [])
 
         // calculating 7days below from current dateTime
         var oneWeekBeforeDateTime = moment(todayDateTime).add(-10080,'minutes').local().format('LLLL');
-
-
-        // Arrays to store list of issues
-        $scope.issuesList = [];
-        $scope.issuesCreatedIn24Hrs =[];
-        $scope.issuesCreatedIn7Days = [];
-        $scope.issuesCreatedBefore7Days = [];
+        $scope.showDiv = false;
 
 
         /**
@@ -28,9 +22,17 @@ angular.module('github-open-issues', [])
          */
 
         $scope.getIssuesCount = function(githubUrl) {
+
+            // Arrays to store list of issues
+            $scope.issuesList = [];
+            $scope.issuesCreatedIn24Hrs =[];
+            $scope.issuesCreatedIn7Days = [];
+            $scope.issuesCreatedBefore7Days = [];
+
             var url = githubUrl.split('/');
             var userName = url[3];
             var repo = url[4];
+            $scope.userName = userName;
             $http({
                 "method": 'GET',
                 "headers": {
@@ -38,8 +40,8 @@ angular.module('github-open-issues', [])
                     "Accept": "application/vnd.github.symmetra-preview+json"
                 },
                 "url": 'https://api.github.com/repos/'+userName+'/'+repo+'/issues'
-            })
-                .then(function(response) {
+            }).then(function(response) {
+                    $scope.showDiv = true;
                     $scope.isError = false;
                     $scope.issuesList = response.data;
                     angular.forEach(response.data, function(data){
@@ -61,10 +63,9 @@ angular.module('github-open-issues', [])
                         if(!isIsuesCreatedIn7Days){
                             $scope.issuesCreatedBefore7Days.push(data);
                         }
-
                     });
-
                 }, function(err) {
+                    $scope.showDiv = false;
                     $scope.issuesList = [];
                     $scope.isError = true;
                     console.log(err,'err')
