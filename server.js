@@ -3,4 +3,5 @@ var express = require('express'),
 console.log("here")
 app.use(express.static(__dirname));
 
-var server = app.listen(3402);
+app.listen(process.env.PORT || 3000);
+
