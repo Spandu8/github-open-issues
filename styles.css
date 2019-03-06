@@ -1,0 +1,39 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: #DCDCDC !important;
+}
+.form-class{
+    margin-top: 30px;
+}
+
+h2{
+    text-align:center;
+}
+form{
+    margin-top: 40px;
+}
+.issues-class{
+    margin-top: 40px;
+}
+span{
+    color: red;
+    font-size: 12px;
+}
+label{
+    font-weight: 700;
+}
+.table{
+    margin-top: 20px;
+    text-align: center;
+}
+input{
+    background-color: #dcdcdc !important;
+    border-color: #000 !important;
+}
+.table td, .table th{
+    border-top: 1px solid #000000 !important;
+}
+.table th{
+    border-bottom: 1px solid #000000 !important;
+
+}
